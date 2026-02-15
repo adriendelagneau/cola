@@ -1,15 +1,22 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
+import localFont from "next/font/local";
 import "./globals.css";
+import { SmoothScrollProvider } from "@/components/providers/SmoothScrollProvider";
+import BackgroundCanvas from "@/components/shader-background/BackgroundCanvas";
+import { BubblesCanvas } from "@/components/bubbles/bubblesCanvas";
+import Header from "@/components/layout/Header";
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
-  subsets: ["latin"],
+import Footer from "@/components/layout/Footer";
+import Sidebar from "@/components/layout/Sidebar";
+
+const creamCake = localFont({
+  variable: "--font-cream-cake",
+  src: "../public/font/Cream Cake.otf",
 });
 
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
+const poppins = localFont({
+  variable: "--font-poppins",
+  src: "../public/font/poppins-extrabold.ttf",
 });
 
 export const metadata: Metadata = {
@@ -23,11 +30,21 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
+    <html lang="fr">
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+        className={`${poppins.variable} ${creamCake.variable} scrollbar scrollbar-none overflow-x-hidden antialiased`}
       >
-        {children}
+        {/* Global Background */}
+        <BackgroundCanvas />
+        <BubblesCanvas />
+
+        <Sidebar />
+        <Header />
+        {/* <SmoothScrollProvider> */}
+          <main className="bg-primary">{children}</main>
+        {/* </SmoothScrollProvider> */}
+
+        <Footer />
       </body>
     </html>
   );
