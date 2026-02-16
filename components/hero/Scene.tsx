@@ -49,9 +49,8 @@ function Scene() {
   const can1Ref = useRef<Group>(null);
   const can3Ref = useRef<Group>(null);
   const can4Ref = useRef<Group>(null);
-
+  const played = sessionStorage.getItem("introPlayed");
   useGSAP(() => {
-    
     if (
       !groupRef.current ||
       !can1Ref.current ||
@@ -69,12 +68,13 @@ function Scene() {
       /* ================= INITIAL STATE ================= */
 
       applyTransform(can1Ref.current!, config.initial.can1);
-      applyTransform(can3Ref.current!, config.initial.can3);
-      applyTransform(can4Ref.current!, config.initial.can4);
+      // applyTransform(can3Ref.current!, config.initial.can3);
+      // applyTransform(can4Ref.current!, config.initial.can4);
 
       /* ================= INTRO STATE ================= */
-
-      applyTransform(can1Ref.current!, config.intro.can1.from);
+      if (!played) {
+        applyTransform(can1Ref.current!, config.intro.can1.from);
+      }
       applyTransform(can3Ref.current!, config.intro.can3.from);
       applyTransform(can4Ref.current!, config.intro.can4.from);
 
@@ -95,8 +95,9 @@ function Scene() {
           completeIntro();
         },
       });
-
-      animateTransform(introTL, can1Ref.current!, config.intro.can1.to, 0);
+      if (!played) {
+        animateTransform(introTL, can1Ref.current!, config.intro.can1.to, 0);
+      }
       animateTransform(introTL, can3Ref.current!, config.intro.can3.to, 0);
       animateTransform(introTL, can4Ref.current!, config.intro.can4.to, 0);
 
@@ -118,11 +119,7 @@ function Scene() {
       animateTransform(scrollTL, can3Ref.current!, config.scroll.can3, 0);
       animateTransform(scrollTL, can4Ref.current!, config.scroll.can4, 0);
 
-      scrollTL.to(
-        groupRef.current!.position,
-        config.scroll.groupPosition,
-        1.3
-      );
+      scrollTL.to(groupRef.current!.position, config.scroll.groupPosition, 1.3);
     };
 
     /* ================= BREAKPOINT SETUP ================= */
@@ -141,9 +138,7 @@ function Scene() {
       setup(CONFIG.LG)
     );
 
-    mm.add("(min-width: 641px) and (max-width: 768px)", () =>
-      setup(CONFIG.MD)
-    );
+    mm.add("(min-width: 641px) and (max-width: 768px)", () => setup(CONFIG.MD));
 
     mm.add("(max-width: 640px)", () => setup(CONFIG.SM));
 
@@ -168,10 +163,7 @@ function Scene() {
       <pointLight position={[0, 1, 3]} intensity={8} />
 
       {/* HDR ENVIRONMENT */}
-      <Environment
-        files={"/hdr/studio.hdr"}
-        environmentIntensity={0.6}
-      />
+      <Environment files={"/hdr/studio.hdr"} environmentIntensity={0.6} />
     </group>
   );
 }

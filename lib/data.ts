@@ -225,9 +225,8 @@ export const CONFIG: Record<"SM" | "MD" | "LG" | "XL" | "XXL" | "XXXL", Breakpoi
   XXL: {
     initial: {
       can1: {
-        position: { x: 1.7, y: -0.1 },
-        rotation: { z: -0.1 },
-        scale: { x:0.9, y:0.9, z:0.9 },
+        position: { y: -0.2, x: 1.2 }, rotation: { z: -0.1 },
+        scale: { x: 0.9, y: 0.9, z: 0.9 },
       },
       can3: {
         position: { y: 5, z: -1 },
@@ -244,12 +243,12 @@ export const CONFIG: Record<"SM" | "MD" | "LG" | "XL" | "XXL" | "XXXL", Breakpoi
         to: { position: { y: -0.2, x: 1.2 }, rotation: { z: -0.1 } },
       },
       can3: {
-        from: { position: { y: 8 },  scale: { x: 0.85, y: 0.85, z: 0.85 }, },
-        to: { position: { y: 5 },  scale: { x: 0.85, y: 0.85, z: 0.85 }, },
+        from: { position: { y: 8 }, scale: { x: 0.85, y: 0.85, z: 0.85 }, },
+        to: { position: { y: 5 }, scale: { x: 0.85, y: 0.85, z: 0.85 }, },
       },
       can4: {
-        from: { position: { y: -8 },  scale: { x: 0.85, y: 0.85, z: 0.85 }, },
-        to: { position: { y: -4.5 },  scale: { x: 0.85, y: 0.85, z: 0.85 }, },
+        from: { position: { y: -8 }, scale: { x: 0.85, y: 0.85, z: 0.85 }, },
+        to: { position: { y: -4.5 }, scale: { x: 0.85, y: 0.85, z: 0.85 }, },
       },
     },
     scroll: {
@@ -277,8 +276,7 @@ export const CONFIG: Record<"SM" | "MD" | "LG" | "XL" | "XXL" | "XXXL", Breakpoi
   XXXL: {
     initial: {
       can1: {
-        position: { x: 0, y: 0 },
-        rotation: { z: -0.1 },
+        position: { y: -0.1, x: 1.7 }, rotation: { z: -0.1 },
         scale: { x: 1, y: 1, z: 1 },
       },
       can3: {
