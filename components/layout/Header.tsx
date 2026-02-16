@@ -27,6 +27,7 @@ const Header = () => {
   // Header appear after intro
   useEffect(() => {
     if (!introCompleted) return;
+    gsap.set(navbarRef.current, { y: -100, opacity: 0 });
     setVisible(true);
     if (navbarRef.current) {
       gsap.fromTo(

@@ -51,6 +51,7 @@ function Scene() {
   const can4Ref = useRef<Group>(null);
 
   useGSAP(() => {
+    
     if (
       !groupRef.current ||
       !can1Ref.current ||

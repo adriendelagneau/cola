@@ -97,14 +97,17 @@ export const useAnimationStore = create<AnimationState>((set) => ({
       introStarted: true,
     }),
 
-  completeIntro: () =>
+  completeIntro: () => {
+
     set({
       introCompleted: true,
       textReady: true,
       canReady: true,
       headerReady: true,
       bubblesReady: true,
-    }),
+    })
+    sessionStorage.setItem("introPlayed", "true");
+  },
 
   setTextReady: (value) =>
     set({

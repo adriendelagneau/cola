@@ -26,9 +26,29 @@ const Hero = () => {
   const title7Ref = useRef(null);
 
   const landingRef = useRef(null);
+
   useGSAP(
     () => {
       if (!ready) return;
+      const played = sessionStorage.getItem("introPlayed");
+      if (played) {
+        gsap.set(
+          [
+            titleRef.current,
+            title2Ref.current,
+            title3Ref.current,
+            title4Ref.current,
+            title5Ref.current,
+            title6Ref.current,
+            title7Ref.current,
+          ],
+          {
+            y: 0,
+          }
+        );
+        completeIntro();
+        return;
+      }
 
       gsap
         .timeline({
