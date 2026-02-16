@@ -277,7 +277,7 @@ export const CONFIG: Record<"SM" | "MD" | "LG" | "XL" | "XXL" | "XXXL", Breakpoi
   XXXL: {
     initial: {
       can1: {
-        position: { x: 1.7, y: -0.1 },
+        position: { x: 0, y: 0 },
         rotation: { z: -0.1 },
         scale: { x: 1, y: 1, z: 1 },
       },
@@ -292,7 +292,7 @@ export const CONFIG: Record<"SM" | "MD" | "LG" | "XL" | "XXL" | "XXXL", Breakpoi
     },
     intro: {
       can1: {
-        from: { position: { y: 5, x: 1 }, rotation: { z: 3 } },
+        from: { position: { y: 0, x: 3.2 }, rotation: { z: 3 } },
         to: { position: { y: -0.1, x: 1.7 }, rotation: { z: -0.1 } },
       },
       can3: {

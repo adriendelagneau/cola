@@ -157,11 +157,11 @@ export default function Sidebar() {
             <div key={item.href} className="overflow-hidden">
               <MenuLink
                 href={item.href}
-                className="menu-link block text-4xl translate-y-full"
+                className="menu-link font-poppins  block text-4xl translate-y-full group"
               >
                 Breizh{" "}
                 <span
-                  className={`uppercase font-extrabold ${item.color}`}
+                  className={`uppercase font-extrabold group-hover:text-primary transition ${item.color}`}
                 >
                   {item.label}
                 </span>
