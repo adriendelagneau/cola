@@ -27,17 +27,20 @@ useGSAP(() => {
       ease: "back.out(2)",
       scrollTrigger: {
         trigger: titleContainerRef.current,
-        start: "top 19%",
+        start: "top 21%",
         end: "bottom 99%",
         toggleActions: "play none none reverse",
+        markers: true,
       },
     });
   });
 
-  // CRITICAL FIX
-  ScrollTrigger.refresh();
+  requestAnimationFrame(() => {
+    ScrollTrigger.refresh();
+  });
 
 }, { scope: titleContainerRef });
+
 
 
   return (
