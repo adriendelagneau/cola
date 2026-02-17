@@ -39,7 +39,7 @@ const ProductTitle = ({ name = "original" }: { name?: string }) => {
   return (
     <div
       ref={titleContainerRef}
-      className="absolute  z-0 top-24 left-0 h-screen w-full"
+      className="absolute  z-40 top-24 left-0 h-screen w-full"
       id="singleTtitle"
     >
       <div ref={subRef} className="relative text-8xl tracking-wider">
