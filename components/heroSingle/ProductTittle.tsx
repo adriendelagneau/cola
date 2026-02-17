@@ -1,5 +1,7 @@
 "use client";
+import useIsomorphicLayoutEffect from "@/hooks/useIsomorphicLayoutEffect";
 import { useGSAP } from "@gsap/react";
+
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import React, { useRef } from "react";
@@ -16,7 +18,7 @@ const ProductTitle = ({ name = "original" }: { name?: string }) => {
   const titleContainerRef = useRef(null);
   const subRef = useRef(null);
 
-  useGSAP(() => {
+  useIsomorphicLayoutEffect(() => {
     const refs = [ref1, ref2, ref3, ref4, ref5];
     const translateYValues = ["100%", "200%", "300%", "400%", "500%"];
 
