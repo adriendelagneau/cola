@@ -37,8 +37,8 @@ export default function RootLayout({
       >
         {/* Global Background */}
         {/* <SmoothScrollProvider> */}
-        <BackgroundCanvas />
-        <BubblesCanvas />
+        {/* <BackgroundCanvas /> */}
+        {/* <BubblesCanvas /> */}
         <ViewCanvas />
         <Sidebar />
         <Header />
