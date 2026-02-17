@@ -27,7 +27,7 @@ useGSAP(() => {
       ease: "back.out(2)",
       scrollTrigger: {
         trigger: titleContainerRef.current,
-        start: "top 21%",
+        start: "top 19%",
         end: "bottom 99%",
         toggleActions: "play none none reverse",
         markers: true,
