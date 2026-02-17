@@ -41,9 +41,9 @@ export default function RootLayout({
         <ViewCanvas />
         <Sidebar />
         <Header />
-        <SmoothScrollProvider>
+        {/* <SmoothScrollProvider> */}
           <main className="bg-primary">{children}</main>
-        </SmoothScrollProvider>
+        {/* </SmoothScrollProvider> */}
 
         <Footer />
       </body>
