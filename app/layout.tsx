@@ -36,16 +36,16 @@ export default function RootLayout({
         className={`${poppins.variable} ${creamCake.variable} scrollbar scrollbar-none overflow-x-hidden antialiased`}
       >
         {/* Global Background */}
-        <SmoothScrollProvider>
+        {/* <SmoothScrollProvider> */}
         <BackgroundCanvas />
         <BubblesCanvas />
         <ViewCanvas />
         <Sidebar />
         <Header />
           <main className="bg-primary">{children}</main>
-        </SmoothScrollProvider>
+        {/* </SmoothScrollProvider> */}
 
-        <Footer />
+        {/* <Footer /> */}
       </body>
     </html>
   );
