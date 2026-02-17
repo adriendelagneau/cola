@@ -36,11 +36,6 @@ export default function Home() {
         speed={1.1}
         sentence="Breizh Cola Cherry revisite l’esprit breton avec une touche fruitée : des bulles de caractère, une cerise intense et une fraîcheur venue de l’Ouest."
       />
-      <Marquee
-        initialDirection={-1}
-        speed={1.1}
-        sentence="Breizh Cola Cherry revisite l’esprit breton avec une touche fruitée : des bulles de caractère, une cerise intense et une fraîcheur venue de l’Ouest."
-      />
     </div>
   );
 }
