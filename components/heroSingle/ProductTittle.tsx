@@ -16,25 +16,29 @@ const ProductTitle = ({ name = "original" }: { name?: string }) => {
   const titleContainerRef = useRef(null);
   const subRef = useRef(null);
 
-  useGSAP(() => {
-    const refs = [ref1, ref2, ref3, ref4, ref5];
-    const translateYValues = ["100%", "200%", "300%", "400%", "500%"];
+useGSAP(() => {
+  const refs = [ref1, ref2, ref3, ref4, ref5];
+  const translateYValues = ["100%", "200%", "300%", "400%", "500%"];
 
-    refs.forEach((ref, index) => {
-      gsap.to(ref.current, {
-        translateY: translateYValues[index],
-        duration: 0.5,
-        ease: "back.out(2)",
-        scrollTrigger: {
-          trigger: titleContainerRef.current,
-          start: "top 19%",
-          end: "bottom 99%",
-          toggleActions: "play none none reverse",
-          // markers: true
-        },
-      });
+  refs.forEach((ref, index) => {
+    gsap.to(ref.current, {
+      translateY: translateYValues[index],
+      duration: 0.5,
+      ease: "back.out(2)",
+      scrollTrigger: {
+        trigger: titleContainerRef.current,
+        start: "top 19%",
+        end: "bottom 99%",
+        toggleActions: "play none none reverse",
+      },
     });
-  }, []);
+  });
+
+  // CRITICAL FIX
+  ScrollTrigger.refresh();
+
+}, { scope: titleContainerRef });
+
 
   return (
     <div
