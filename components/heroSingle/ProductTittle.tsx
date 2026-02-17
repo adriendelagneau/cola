@@ -9,11 +9,11 @@ gsap.registerPlugin(ScrollTrigger);
 
 const ProductTitle = ({ name = "original" }) => {
   const container = useRef(null);
-  const refs = useRef([]);
+  const refs = useRef<HTMLDivElement[]>([]);
 
   refs.current = [];
 
-  const addToRefs = (el) => {
+  const addToRefs = (el: any) => {
     if (el && !refs.current.includes(el)) {
       refs.current.push(el);
     }
