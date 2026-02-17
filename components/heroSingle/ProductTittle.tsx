@@ -1,4 +1,5 @@
 "use client";
+
 import { useGSAP } from "@gsap/react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
@@ -6,100 +7,66 @@ import React, { useRef } from "react";
 
 gsap.registerPlugin(ScrollTrigger);
 
-const ProductTitle = ({ name = "original" }: { name?: string }) => {
-  const ref1 = useRef(null);
-  const ref2 = useRef(null);
-  const ref3 = useRef(null);
-  const ref4 = useRef(null);
-  const ref5 = useRef(null);
+const ProductTitle = ({ name = "original" }) => {
+  const container = useRef(null);
+  const refs = useRef([]);
 
-  const titleContainerRef = useRef(null);
-  const subRef = useRef(null);
+  refs.current = [];
 
-  useGSAP(() => {
-        // Kill old triggers (CRITICAL in Next.js routing)
+  const addToRefs = (el) => {
+    if (el && !refs.current.includes(el)) {
+      refs.current.push(el);
+    }
+  };
+
+  useGSAP(
+    () => {
+      // Kill old triggers (CRITICAL in Next.js routing)
       ScrollTrigger.getAll().forEach(trigger => trigger.kill());
-  const refs = [ref1, ref2, ref3, ref4, ref5];
-  const translateYValues = ["100%", "200%", "300%", "400%", "500%"];
 
-  refs.forEach((ref, index) => {
-    gsap.to(ref.current, {
-      y: translateYValues[index],
-      duration: 0.5,
-      ease: "back.out(2)",
-      scrollTrigger: {
-        trigger: titleContainerRef.current,
-        start: "top 10%",
-        end: "bottom 99%",
-        toggleActions: "play none none reverse",
-        invalidateOnRefresh: true,
-      },
-    });
-  });
+      const translateYValues = ["100%", "200%", "300%", "400%", "500%"];
 
-  requestAnimationFrame(() => {
-    ScrollTrigger.refresh();
-  });
+      refs.current.forEach((el, index) => {
+        gsap.to(el, {
+          y: translateYValues[index],
+          duration: 0.5,
+          ease: "back.out(2)",
+          scrollTrigger: {
+            trigger: container.current,
+            start: "top 19%",
+            end: "bottom 99%",
+            toggleActions: "play none none reverse",
+          },
+        });
+      });
 
-}, { scope: titleContainerRef });
-
-
-
+      ScrollTrigger.refresh();
+    },
+    {
+      scope: container,
+      dependencies: [name], // CRITICAL
+      revertOnUpdate: true, // CRITICAL
+    }
+  );
 
   return (
-    <div
-      ref={titleContainerRef}
-      className="absolute  z-0 top-24 left-0 h-screen w-full"
-      id="singleTtitle"
-    >
-      <div ref={subRef} className="relative text-8xl tracking-wider">
-        <div
-          className={
-            "text-secondary text-stroke-secondary-1 font-poppins absolute top-0 left-1/2 z-10 -translate-x-1/2  uppercase opacity-100"
-          }
-        >
+    <div ref={container} className="absolute top-24 left-0 h-screen w-full">
+      <div className="relative text-8xl tracking-wider">
+
+        <div className="absolute left-1/2 -translate-x-1/2 uppercase">
           {name}
         </div>
-        <div
-          ref={ref1}
-          className={
-            "text-stroke-secondary-1 text-primary font-poppins absolute top-0 left-1/2 -translate-x-1/2  uppercase opacity-70"
-          }
-        >
-          {name}
-        </div>
-        <div
-          ref={ref2}
-          className={
-            "text-stroke-secondary-1 text-primary font-poppins absolute top-0 left-1/2 -translate-x-1/2  uppercase opacity-50"
-          }
-        >
-          {name}
-        </div>
-        <div
-          ref={ref3}
-          className={
-            "text-stroke-secondary-1 text-primary font-poppins absolute top-0 left-1/2 -translate-x-1/2  uppercase opacity-30"
-          }
-        >
-          {name}
-        </div>
-        <div
-          ref={ref4}
-          className={
-            "text-stroke-secondary-1 text-primary font-poppins absolute top-0 left-1/2 -translate-x-1/2  uppercase opacity-10"
-          }
-        >
-          {name}
-        </div>
-        <div
-          ref={ref5}
-          className={
-            "text-stroke-secondary-1 text-primary font-poppins absolute top-0 left-1/2 -translate-x-1/2  uppercase opacity-5"
-          }
-        >
-          {name}
-        </div>
+
+        {[...Array(5)].map((_, i) => (
+          <div
+            key={i}
+            ref={addToRefs}
+            className="absolute left-1/2 -translate-x-1/2 uppercase opacity-50"
+          >
+            {name}
+          </div>
+        ))}
+
       </div>
     </div>
   );
