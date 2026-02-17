@@ -2,8 +2,7 @@
 import { useGSAP } from "@gsap/react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-import { useLenis } from "lenis/react";
-import React, { useRef, useEffect } from "react";
+import React, { useRef } from "react";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -17,26 +16,13 @@ const ProductTitle = ({ name = "original" }: { name?: string }) => {
   const titleContainerRef = useRef(null);
   const subRef = useRef(null);
 
-  const lenis = useLenis();
-
-  // Sync Lenis with GSAP ScrollTrigger
-  useEffect(() => {
-    if (!lenis) return;
-
-    lenis.on("scroll", ScrollTrigger.update);
-
-    return () => {
-      lenis.off("scroll", ScrollTrigger.update);
-    };
-  }, [lenis]);
-
   useGSAP(() => {
     const refs = [ref1, ref2, ref3, ref4, ref5];
     const translateYValues = ["100%", "200%", "300%", "400%", "500%"];
 
     refs.forEach((ref, index) => {
       gsap.to(ref.current, {
-        y: translateYValues[index],
+        translateY: translateYValues[index],
         duration: 0.5,
         ease: "back.out(2)",
         scrollTrigger: {
@@ -53,13 +39,13 @@ const ProductTitle = ({ name = "original" }: { name?: string }) => {
   return (
     <div
       ref={titleContainerRef}
-      className="absolute top-24 left-0 z-40 h-screen w-full"
+      className="absolute  z-0 top-24 left-0 h-screen w-full"
       id="singleTtitle"
     >
       <div ref={subRef} className="relative text-8xl tracking-wider">
         <div
           className={
-            "text-secondary text-stroke-secondary-1 font-poppins absolute top-0 left-1/2 z-10 -translate-x-1/2 uppercase opacity-100"
+            "text-secondary text-stroke-secondary-1 font-poppins absolute top-0 left-1/2 z-10 -translate-x-1/2  uppercase opacity-100"
           }
         >
           {name}
@@ -67,7 +53,7 @@ const ProductTitle = ({ name = "original" }: { name?: string }) => {
         <div
           ref={ref1}
           className={
-            "text-stroke-secondary-1 text-primary font-poppins absolute top-0 left-1/2 -translate-x-1/2 uppercase opacity-70"
+            "text-stroke-secondary-1 text-primary font-poppins absolute top-0 left-1/2 -translate-x-1/2  uppercase opacity-70"
           }
         >
           {name}
@@ -75,7 +61,7 @@ const ProductTitle = ({ name = "original" }: { name?: string }) => {
         <div
           ref={ref2}
           className={
-            "text-stroke-secondary-1 text-primary font-poppins absolute top-0 left-1/2 -translate-x-1/2 uppercase opacity-50"
+            "text-stroke-secondary-1 text-primary font-poppins absolute top-0 left-1/2 -translate-x-1/2  uppercase opacity-50"
           }
         >
           {name}
@@ -83,7 +69,7 @@ const ProductTitle = ({ name = "original" }: { name?: string }) => {
         <div
           ref={ref3}
           className={
-            "text-stroke-secondary-1 text-primary font-poppins absolute top-0 left-1/2 -translate-x-1/2 uppercase opacity-30"
+            "text-stroke-secondary-1 text-primary font-poppins absolute top-0 left-1/2 -translate-x-1/2  uppercase opacity-30"
           }
         >
           {name}
@@ -91,7 +77,7 @@ const ProductTitle = ({ name = "original" }: { name?: string }) => {
         <div
           ref={ref4}
           className={
-            "text-stroke-secondary-1 text-primary font-poppins absolute top-0 left-1/2 -translate-x-1/2 uppercase opacity-10"
+            "text-stroke-secondary-1 text-primary font-poppins absolute top-0 left-1/2 -translate-x-1/2  uppercase opacity-10"
           }
         >
           {name}
@@ -99,7 +85,7 @@ const ProductTitle = ({ name = "original" }: { name?: string }) => {
         <div
           ref={ref5}
           className={
-            "text-stroke-secondary-1 text-primary font-poppins absolute top-0 left-1/2 -translate-x-1/2 uppercase opacity-5"
+            "text-stroke-secondary-1 text-primary font-poppins absolute top-0 left-1/2 -translate-x-1/2  uppercase opacity-5"
           }
         >
           {name}
