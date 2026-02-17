@@ -22,7 +22,7 @@ useGSAP(() => {
 
   refs.forEach((ref, index) => {
     gsap.to(ref.current, {
-      translateY: translateYValues[index],
+      y: translateYValues[index],
       duration: 0.5,
       ease: "back.out(2)",
       scrollTrigger: {
@@ -30,7 +30,7 @@ useGSAP(() => {
         start: "top 19%",
         end: "bottom 99%",
         toggleActions: "play none none reverse",
-        markers: true,
+        invalidateOnRefresh: true,
       },
     });
   });
@@ -40,6 +40,7 @@ useGSAP(() => {
   });
 
 }, { scope: titleContainerRef });
+
 
 
 
