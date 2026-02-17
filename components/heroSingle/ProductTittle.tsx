@@ -16,7 +16,9 @@ const ProductTitle = ({ name = "original" }: { name?: string }) => {
   const titleContainerRef = useRef(null);
   const subRef = useRef(null);
 
-useGSAP(() => {
+  useGSAP(() => {
+        // Kill old triggers (CRITICAL in Next.js routing)
+      ScrollTrigger.getAll().forEach(trigger => trigger.kill());
   const refs = [ref1, ref2, ref3, ref4, ref5];
   const translateYValues = ["100%", "200%", "300%", "400%", "500%"];
 
@@ -35,9 +37,7 @@ useGSAP(() => {
     });
   });
 
-  requestAnimationFrame(() => {
-    ScrollTrigger.refresh();
-  });
+
 
 }, { scope: titleContainerRef });
 
