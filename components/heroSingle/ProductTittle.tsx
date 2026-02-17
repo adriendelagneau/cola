@@ -37,7 +37,9 @@ const ProductTitle = ({ name = "original" }: { name?: string }) => {
     });
   });
 
-
+  requestAnimationFrame(() => {
+    ScrollTrigger.refresh();
+  });
 
 }, { scope: titleContainerRef });
 
