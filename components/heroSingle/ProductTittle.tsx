@@ -7,13 +7,16 @@ import React, { useRef } from "react";
 
 gsap.registerPlugin(ScrollTrigger);
 
-const ProductTitle = ({ name = "original" }) => {
-  const container = useRef(null);
-  const refs = useRef([]);
+const ProductTitle = ({ name = "original" }: { name?: string }) => {
+  const container = useRef<HTMLDivElement | null>(null);
+
+  // ✅ FIX: explicitly type the array
+  const refs = useRef<HTMLDivElement[]>([]);
 
   refs.current = [];
 
-  const addToRefs = (el) => {
+  // ✅ FIX: type parameter
+  const addToRefs = (el: HTMLDivElement | null) => {
     if (el && !refs.current.includes(el)) {
       refs.current.push(el);
     }
@@ -21,7 +24,6 @@ const ProductTitle = ({ name = "original" }) => {
 
   useGSAP(
     () => {
-      // Kill old triggers (CRITICAL in Next.js routing)
       ScrollTrigger.getAll().forEach(trigger => trigger.kill());
 
       const translateYValues = ["100%", "200%", "300%", "400%", "500%"];
@@ -44,8 +46,8 @@ const ProductTitle = ({ name = "original" }) => {
     },
     {
       scope: container,
-      dependencies: [name], // CRITICAL
-      revertOnUpdate: true, // CRITICAL
+      dependencies: [name],
+      revertOnUpdate: true,
     }
   );
 
