@@ -5,7 +5,7 @@ import ProductZero from "@/components/productZero/ProductZero";
 
 export default function Home() {
   return (
-    <div className="relative  min-h-screen w-full">
+    <div className="relative z-5 min-h-screen w-full">
       <Hero />
       <Marquee
         initialDirection={1}

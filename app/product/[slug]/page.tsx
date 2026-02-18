@@ -15,7 +15,7 @@ const Page = async ({ params }: PageProps) => {
     | "grape";
 
   return (
-    <div className="relative pt-24">
+    <div className="relative z-5 pt-24">
       <HeroSingle variant={slug} />
       <h3 className="text-secondary font-poppins w-full text-center text-4xl uppercase">
         choose your favorite one
