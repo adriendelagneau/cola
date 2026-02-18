@@ -50,91 +50,84 @@ function Scene() {
   const can3Ref = useRef<Group>(null);
   const can4Ref = useRef<Group>(null);
   const played = sessionStorage.getItem("introPlayed");
-useGSAP(
-  (context) => {
-    if (
-      !groupRef.current ||
-      !can1Ref.current ||
-      !can3Ref.current ||
-      !can4Ref.current
-    )
-      return;
+useGSAP(() => {
+  if (
+    !groupRef.current ||
+    !can1Ref.current ||
+    !can3Ref.current ||
+    !can4Ref.current
+  )
+    return;
 
-    markMeshReady();
+  markMeshReady();
+
+  const ctx = gsap.context(() => {
 
     const mm = gsap.matchMedia();
 
-    context.add(() => {
-      const setup = (config: BreakpointConfig) => {
+    const setup = (config: BreakpointConfig) => {
 
-        applyTransform(can1Ref.current!, config.initial.can1);
+      applyTransform(can1Ref.current!, config.initial.can1);
 
-        const played = sessionStorage.getItem("introPlayed");
+      const played = sessionStorage.getItem("introPlayed");
 
-        if (!played) {
-          applyTransform(can1Ref.current!, config.intro.can1.from);
-        }
+      if (!played) {
+        applyTransform(can1Ref.current!, config.intro.can1.from);
+      }
 
-        applyTransform(can3Ref.current!, config.intro.can3.from);
-        applyTransform(can4Ref.current!, config.intro.can4.from);
+      applyTransform(can3Ref.current!, config.intro.can3.from);
+      applyTransform(can4Ref.current!, config.intro.can4.from);
 
-        const introTL = gsap.timeline({
-          defaults: {
-            duration: 1,
-            delay: 1.5,
-            ease: "back.out(1.4)",
-          },
-          onStart: startIntro,
-          onComplete: completeIntro,
-        });
+      const introTL = gsap.timeline({
+        defaults: {
+          duration: 1,
+          delay: 1.5,
+          ease: "back.out(1.4)",
+        },
+        onStart: startIntro,
+        onComplete: completeIntro,
+      });
 
-        if (!played) {
-          animateTransform(introTL, can1Ref.current!, config.intro.can1.to);
-        }
+      if (!played) {
+        animateTransform(introTL, can1Ref.current!, config.intro.can1.to);
+      }
 
-        animateTransform(introTL, can3Ref.current!, config.intro.can3.to);
-        animateTransform(introTL, can4Ref.current!, config.intro.can4.to);
+      animateTransform(introTL, can3Ref.current!, config.intro.can3.to);
+      animateTransform(introTL, can4Ref.current!, config.intro.can4.to);
 
-        const scrollTL = gsap.timeline({
-          scrollTrigger: {
-            trigger: ".hero",
-            start: "top top",
-            end: "bottom bottom",
-            scrub: 1.5,
-          },
-        });
+      const scrollTL = gsap.timeline({
+        scrollTrigger: {
+          trigger: ".hero",
+          start: "top top",
+          end: "bottom bottom",
+          scrub: 1.5,
+        },
+      });
 
-        scrollTL.to(groupRef.current!.rotation, config.scroll.groupRotation);
+      scrollTL.to(groupRef.current!.rotation, config.scroll.groupRotation);
 
-        animateTransform(scrollTL, can1Ref.current!, config.scroll.can1);
-        animateTransform(scrollTL, can3Ref.current!, config.scroll.can3);
-        animateTransform(scrollTL, can4Ref.current!, config.scroll.can4);
+      animateTransform(scrollTL, can1Ref.current!, config.scroll.can1);
+      animateTransform(scrollTL, can3Ref.current!, config.scroll.can3);
+      animateTransform(scrollTL, can4Ref.current!, config.scroll.can4);
 
-        scrollTL.to(groupRef.current!.position, config.scroll.groupPosition);
-      };
-
-      mm.add("(min-width: 1536px)", () => setup(CONFIG.XXXL));
-      mm.add("(min-width: 1280px) and (max-width: 1536px)", () =>
-        setup(CONFIG.XXL)
-      );
-      mm.add("(min-width: 1024px) and (max-width: 1280px)", () =>
-        setup(CONFIG.XL)
-      );
-      mm.add("(min-width: 768px) and (max-width: 1024px)", () =>
-        setup(CONFIG.LG)
-      );
-      mm.add("(min-width: 641px) and (max-width: 768px)", () =>
-        setup(CONFIG.MD)
-      );
-      mm.add("(max-width: 640px)", () => setup(CONFIG.SM));
-    });
-
-    return () => {
-      mm.revert();
+      scrollTL.to(groupRef.current!.position, config.scroll.groupPosition);
     };
-  },
-  { scope: groupRef }
-);
+
+    mm.add("(min-width: 1536px)", () => setup(CONFIG.XXXL));
+    mm.add("(min-width: 1280px) and (max-width: 1536px)", () => setup(CONFIG.XXL));
+    mm.add("(min-width: 1024px) and (max-width: 1280px)", () => setup(CONFIG.XL));
+    mm.add("(min-width: 768px) and (max-width: 1024px)", () => setup(CONFIG.LG));
+    mm.add("(min-width: 641px) and (max-width: 768px)", () => setup(CONFIG.MD));
+    mm.add("(max-width: 640px)", () => setup(CONFIG.SM));
+
+    return () => mm.revert();
+
+  });
+
+  return () => ctx.revert();
+
+}, []);
+
 
 
   /* ================= JSX ================= */
