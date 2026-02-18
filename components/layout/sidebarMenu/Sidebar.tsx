@@ -172,7 +172,7 @@ export default function Sidebar() {
               >
                 Breizh{" "}
                 <span
-                  className={`text-primary font-poppins text-4xl sm:text-5xl lg:text-6xl xl:text-7xl transition-colors duration-300 ${item.color}`}
+                  className={`text-primary font-poppins text-4xl sm:text-5xl lg:text-6xl xl:text-[70px] transition-colors duration-300 ${item.color}`}
                 >
                   {item.label}
                 </span>
