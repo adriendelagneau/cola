@@ -6,7 +6,7 @@ import ProductZero from "@/components/productZero/ProductZero";
 export default function Home() {
   return (
     <div className="relative  min-h-screen w-full">
-      <Hero />
+      {/* <Hero /> */}
       <Marquee
         initialDirection={1}
         speed={1}
