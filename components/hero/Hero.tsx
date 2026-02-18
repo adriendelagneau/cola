@@ -80,9 +80,9 @@ const Hero = () => {
 
   return (
     <div className="w-full">
-      {/* <View className="hero-scene pointer-events-none sticky top-0 z-30 -mt-[100vh] h-screen w-full">
+      <View className="hero-scene pointer-events-none sticky top-0 z-10 -mt-[100vh] h-screen w-full">
         <Scene />
-      </View> */}
+      </View>
 
       <div className="hero tracking-wider">
         <div
