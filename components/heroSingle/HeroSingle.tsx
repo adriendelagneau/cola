@@ -9,7 +9,7 @@ import Scene from "./Scene";
 const HeroSingle = ({
   variant,
 }: {
-  variant: "original" | "cherry" | "zero" | "lime" | "grape";
+  variant: "original" | "cherry" | "zero" | "lime" | "coffe";
 }) => {
   console.log(variant);
   return (

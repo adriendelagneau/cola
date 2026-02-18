@@ -12,7 +12,7 @@ import FloatingCan from "@/components/FloatingCan";
 gsap.registerPlugin(ScrollTrigger);
 
 type SceneProps = {
-  flavor: "original" | "cherry" | "zero" | "lime" | "grape";
+  flavor: "original" | "cherry" | "zero" | "lime" | "coffe";
 };
 
 type ResponsiveConfig = {

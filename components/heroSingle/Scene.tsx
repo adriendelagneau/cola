@@ -9,7 +9,7 @@ import { Group } from "three";
 import FloatingCan from "@/components/FloatingCan";
 
 type SceneProps = {
-  flavor: "original" | "cherry" | "zero" | "lime" | "grape"; // Restrict flavor to these specific strings
+  flavor: "original" | "cherry" | "zero" | "lime" | "coffe"; // Restrict flavor to these specific strings
 };
 
 const Scene = ({ flavor }: SceneProps) => {

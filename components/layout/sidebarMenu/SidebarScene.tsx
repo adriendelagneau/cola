@@ -28,18 +28,18 @@ export default function SidebarScene() {
   return (
     <>
       <group ref={containerRef}>
-        <FloatingCan scale={1.5} flavor="original" position={[0, 0, 0]} />
+        <FloatingCan floatSpeed={4.5} scale={1.5} flavor="original" position={[0, 0, 0]} />
 
-        <FloatingCan scale={1.5} flavor="zero" position={[0, SPACING, 0]} />
+        <FloatingCan floatSpeed={4.5} scale={1.5} flavor="zero" position={[0, SPACING, 0]} />
 
-        <FloatingCan
+        <FloatingCan floatSpeed={4.5}
           scale={1.5}
           flavor="cherry"
           position={[0, SPACING * 2, 0]}
         />
 
-        <FloatingCan scale={1.5} flavor="lime" position={[0, SPACING * 3, 0]} />
-        <FloatingCan scale={1.5} flavor="grape" position={[0, SPACING * 4, 0]} />
+        <FloatingCan floatSpeed={4.5} scale={1.5} flavor="lime" position={[0, SPACING * 3, 0]} />
+        <FloatingCan floatSpeed={4.5} scale={1.5} flavor="coffe" position={[0, SPACING * 4, 0]} />
 
       </group>
 

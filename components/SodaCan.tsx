@@ -10,7 +10,7 @@ const flavorTextures = {
   cherry: "/labels/bccherry.png",
   zero: "/labels/bczero.png",
   lime: "/labels/bcgreen.png",
-  grape: "/labels/bccherry.png",
+  coffe: "/labels/bccherry.png",
 };
 
 const metalMaterial = new THREE.MeshStandardMaterial({
@@ -38,7 +38,7 @@ export function SodaCan({
   labels.original.flipY = false;
   labels.zero.flipY = false;
   labels.lime.flipY = false;
-  labels.grape.flipY = false;
+  labels.coffe.flipY = false;
 
   const label = labels[flavor];
 

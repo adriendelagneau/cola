@@ -37,7 +37,7 @@ export default function MenuLink({
   return (
     <button
       onClick={handleClick}
-      className={`text-8xl -skew-1 cursor-pointer font-semibold text-left ${className}`}
+      className={` -skew-1 cursor-pointer font-semibold text-left ${className}`}
       {...rest}
     >
       {children}

@@ -21,8 +21,8 @@ const FLAVORS: {
   { flavor: "original", color: "#591420", name: "The Original" },
   { flavor: "zero", color: "#000000", name: "Zero Sucres" },
   { flavor: "cherry", color: "#2e0823", name: "Cherry" },
-  { flavor: "lime", color: "#254e00", name: "Lime Twist" },
-  { flavor: "grape", color: "#3b0a45", name: "Grape Blast" },
+  { flavor: "lime", color: "#00A300", name: "Lime Twist" },
+  { flavor: "coffe", color: "#3b0a45", name: "Coffe Blast" },
 ];
 
 const Carousel = () => {

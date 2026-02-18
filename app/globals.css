@@ -8,7 +8,9 @@
 :root {
   --primary: #591420;
   --secondary: #f5ddd2;
-  --cherryColor: #2e0823;
+ --color-cherry: #a855f7; /* purple-500 */
+  --color-lime: #65a30d;   /* lime-600 */
+  --color-coffee: #92400e; /* amber-800 */
 }
 
 @theme inline {
@@ -23,7 +25,8 @@
   --color-primary: var(--primary);
   --color-secondary: var(--secondary);
   --color-cherry: var(--cherryColor);
-  
+   --color-lime: var(--limeColor); 
+   --color-coffe: var(--coffeColor);
 }
 
 @layer utilities {
