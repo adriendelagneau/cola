@@ -153,4 +153,18 @@ export const useMeshStore = create<MeshState>((set) => ({
   isReady: () => set({ ready: true }),
 }));
 
-//tytftf
+interface SidebarCanState {
+
+  activeCan: number;
+  setActiveCan: (index: number) => void;
+
+}
+
+export const useSidebarCanStore = create<SidebarCanState>((set) => ({
+
+  activeCan: 0,
+
+  setActiveCan: (index) =>
+    set({ activeCan: index }),
+
+}));

@@ -3,6 +3,7 @@
 import { Float } from "@react-three/drei";
 import { forwardRef, ReactNode } from "react";
 import { Group } from "three";
+import { useThree } from "@react-three/fiber";
 
 import { SodaCan, SodaCanProps } from "./SodaCan";
 
@@ -14,7 +15,10 @@ type FloatingCanProps = {
   floatingRange?: [number, number];
   scale?: number | [number, number, number];
   children?: ReactNode;
-};
+  position?: [number, number, number];
+  rotation?: [number, number, number];
+  [key: string]: any;
+}; // <-- this allows position, rotation, etc
 
 const FloatingCan = forwardRef<Group, FloatingCanProps>(
   (
