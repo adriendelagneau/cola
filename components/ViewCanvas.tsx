@@ -6,21 +6,21 @@ import { Canvas } from "@react-three/fiber";
 import { Suspense } from "react";
 import { useEffect, useState } from "react";
 
-import { useMeshStore } from "@/lib/store/useZuStore";
+
 
 const ViewCanvas = () => {
-  const ready = useMeshStore((state) => state.ready);
+  // const ready = useMeshStore((state) => state.ready);
 
   const [zIndex, setZIndex] = useState(30);
 
-  useEffect(() => {
-    if (ready) {
-      const timeout = setTimeout(() => {
-        setZIndex(30); // bring canvas forward smoothly
-      }, 300); // match your CSS animation delay
-      return () => clearTimeout(timeout);
-    }
-  }, [ready]);
+  // useEffect(() => {
+  //   if (ready) {
+  //     const timeout = setTimeout(() => {
+  //       setZIndex(30); // bring canvas forward smoothly
+  //     }, 300); // match your CSS animation delay
+  //     return () => clearTimeout(timeout);
+  //   }
+  // }, [ready]);
 
   return (
     <Canvas

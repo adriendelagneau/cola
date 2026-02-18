@@ -24,7 +24,8 @@ export default function Sidebar() {
   const setAnimating = useMenuStore((state) => state.setAnimating);
 
   const setActiveCan = useSidebarCanStore((s) => s.setActiveCan);
-
+// inside your Sidebar component
+const resetActiveCan = useSidebarCanStore((state) => state.resetActiveCan);
   const items = [
     { href: "/product/original", label: "original", color: "" },
     { href: "/product/zero", label: "zero", color: "text-black" },
@@ -61,7 +62,8 @@ export default function Sidebar() {
           gsap.set(links, { y: "100%" });
           gsap.set(imageAreaRef.current, { y: "100%", opacity: 0 });
           gsap.set(socialRef.current, { y: "100%", opacity: 0 });
-
+   
+          resetActiveCan();
         },
 
       });
@@ -175,11 +177,11 @@ export default function Sidebar() {
               <MenuLink
                 href={item.href}
                 onMouseEnter={() => setActiveCan(index)}
-                className="menu-link font-poppins group block translate-y-full text-4xl"
+                className="menu-link font-cream-cake group block translate-y-full text-6xl"
               >
                 Breizh{" "}
                 <span
-                  className={`uppercase font-extrabold transition group-hover:text-primary ${item.color}`}
+                  className={`uppercase font-poppins font-extrabold text-6xl transition group-hover:text-primary ${item.color}`}
                 >
                   {item.label}
                 </span>

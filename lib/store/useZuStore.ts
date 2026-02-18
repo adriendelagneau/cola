@@ -1,31 +1,7 @@
 import { create } from "zustand";
 
 //
-// 🫧 Bubble Store (user-controlled, keep as-is)
-//
-interface BubbleState {
-  isPlaying: boolean;
-  togglePlay: () => void;
-  setPlaying: (value: boolean) => void;
-}
-
-export const useBubbleStore = create<BubbleState>((set) => ({
-  isPlaying: false,
-
-  togglePlay: () =>
-    set((state) => ({
-      isPlaying: !state.isPlaying,
-    })),
-
-  // useful for animation orchestration
-  setPlaying: (value) =>
-    set({
-      isPlaying: value,
-    }),
-}));
-
-//
-// 🍔 Menu Store (keep as-is)
+// 🍔 Sidebar / Menu Store
 //
 interface MenuState {
   isMenuOpen: boolean;
@@ -57,21 +33,54 @@ export const useMenuStore = create<MenuState>((set) => ({
 }));
 
 //
-// 🎬 Animation Orchestration Store (NEW)
-// Controls intro timeline and shared animation flags
+// 🥫 Sidebar Can Store
+//
+interface SidebarCanState {
+  activeCan: number;
+  setActiveCan: (index: number) => void;
+  resetActiveCan: () => void; // reset to first can (0)
+}
+
+export const useSidebarCanStore = create<SidebarCanState>((set) => ({
+  activeCan: 0,
+
+  setActiveCan: (index) =>
+    set({ activeCan: index }),
+
+  resetActiveCan: () =>
+    set({ activeCan: 0 }),
+}));
+
+//
+// 🫧 Optional: Bubble Store (unchanged)
+//
+interface BubbleState {
+  isPlaying: boolean;
+  togglePlay: () => void;
+  setPlaying: (value: boolean) => void;
+}
+
+export const useBubbleStore = create<BubbleState>((set) => ({
+  isPlaying: false,
+
+  togglePlay: () =>
+    set((state) => ({ isPlaying: !state.isPlaying })),
+
+  setPlaying: (value) => set({ isPlaying: value }),
+}));
+
+//
+// 🎬 Animation Orchestration Store (unchanged)
 //
 interface AnimationState {
-  // master intro lifecycle
   introStarted: boolean;
   introCompleted: boolean;
 
-  // individual animation flags
   textReady: boolean;
   canReady: boolean;
   headerReady: boolean;
   bubblesReady: boolean;
 
-  // actions
   startIntro: () => void;
   completeIntro: () => void;
 
@@ -92,42 +101,23 @@ export const useAnimationStore = create<AnimationState>((set) => ({
   headerReady: false,
   bubblesReady: false,
 
-  startIntro: () =>
-    set({
-      introStarted: true,
-    }),
+  startIntro: () => set({ introStarted: true }),
 
   completeIntro: () => {
-
     set({
       introCompleted: true,
       textReady: true,
       canReady: true,
       headerReady: true,
       bubblesReady: true,
-    })
+    });
     sessionStorage.setItem("introPlayed", "true");
   },
 
-  setTextReady: (value) =>
-    set({
-      textReady: value,
-    }),
-
-  setCanReady: (value) =>
-    set({
-      canReady: value,
-    }),
-
-  setHeaderReady: (value) =>
-    set({
-      headerReady: value,
-    }),
-
-  setBubblesReady: (value) =>
-    set({
-      bubblesReady: value,
-    }),
+  setTextReady: (value) => set({ textReady: value }),
+  setCanReady: (value) => set({ canReady: value }),
+  setHeaderReady: (value) => set({ headerReady: value }),
+  setBubblesReady: (value) => set({ bubblesReady: value }),
 
   resetIntro: () =>
     set({
@@ -153,18 +143,4 @@ export const useMeshStore = create<MeshState>((set) => ({
   isReady: () => set({ ready: true }),
 }));
 
-interface SidebarCanState {
 
-  activeCan: number;
-  setActiveCan: (index: number) => void;
-
-}
-
-export const useSidebarCanStore = create<SidebarCanState>((set) => ({
-
-  activeCan: 0,
-
-  setActiveCan: (index) =>
-    set({ activeCan: index }),
-
-}));
