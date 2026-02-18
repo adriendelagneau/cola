@@ -21,6 +21,7 @@ const Page = async ({ params }: PageProps) => {
         choose your favorite one
       </h3>
       <Carousel />
+      <Social />
     </div>
   );
 };

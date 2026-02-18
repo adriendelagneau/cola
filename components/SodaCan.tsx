@@ -31,9 +31,16 @@ export function SodaCan({
 }: SodaCanProps) {
   const { nodes } = useGLTF("/Soda-can.gltf");
 
-const label = useTexture(flavorTextures[flavor]);
-label.flipY = false;
+  const labels = useTexture(flavorTextures);
 
+  // Fixes upside down labels
+  labels.cherry.flipY = false;
+  labels.original.flipY = false;
+  labels.zero.flipY = false;
+  labels.lime.flipY = false;
+  labels.grape.flipY = false;
+
+  const label = labels[flavor];
 
   return (
     <group
@@ -54,8 +61,8 @@ label.flipY = false;
         geometry={(nodes.cylinder_1 as THREE.Mesh).geometry}
       >
         <meshStandardMaterial
-          roughness={0.55}
-          metalness={0.8}
+          roughness={0.28}
+          metalness={0.85}
           map={label}
 
         />
