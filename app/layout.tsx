@@ -8,6 +8,8 @@ import Header from "@/components/layout/Header";
 
 import Footer from "@/components/layout/Footer";
 import Sidebar from "@/components/layout/Sidebar";
+import BackgroundCanvas from "@/components/shader-background/BackgroundCanvas";
+import { BubblesCanvas } from "@/components/bubbles/bubblesCanvas";
 
 const creamCake = localFont({
   variable: "--font-cream-cake",
@@ -35,8 +37,8 @@ export default function RootLayout({
         className={`${poppins.variable} ${creamCake.variable} scrollbar scrollbar-none overflow-x-hidden antialiased`}
       >
         {/* Global Background */}
-        {/* <BackgroundCanvas />
-        <BubblesCanvas /> */}
+        <BackgroundCanvas />
+        <BubblesCanvas />
         <ViewCanvas />
         <Sidebar />
         <Header />
