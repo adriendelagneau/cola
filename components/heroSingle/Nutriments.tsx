@@ -18,13 +18,13 @@ const Nutriments = ({ product }: { product: Product }) => {
   const n = product.nutritionel;
 
   return (
-    <section className="flex flex-col gap-6 p-12 max-w-3xl text-secondary">
+    <section className="flex flex-col justify-center gap-18 p-12 max-w-4xl text-secondary h-screen">
 
-      <h2 className="text-3xl font-bold capitalize">
+      <h2 className="text-5xl font-bold capitalize">
         Valeurs nutritionnelles — {product.name}
       </h2>
 
-      <div className="grid grid-cols-2 gap-4">
+      <div className="grid grid-cols-2 gap-4 text-3xl">
 
         <Nutrient label="Énergie" value={`${n.energie} kcal`} />
         <Nutrient label="Graisses" value={`${n.graisses} g`} />
@@ -35,8 +35,8 @@ const Nutriments = ({ product }: { product: Product }) => {
       </div>
 
       <div>
-        <h3 className="font-semibold mb-2">Ingrédients</h3>
-        <p className="text-sm opacity-80">{product.ingredients}</p>
+        <h3 className="font-semibold mb-2 text-3xl">Ingrédients</h3>
+        <p className="text-xl opacity-80">{product.ingredients}</p>
       </div>
 
     </section>
