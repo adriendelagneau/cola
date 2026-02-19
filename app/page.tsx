@@ -1,9 +1,8 @@
 import Hero from "@/components/hero/Hero";
 import Marquee from "@/components/Marquee";
-import Marquee2 from "@/components/Marquee2";
 import ProductCherry from "@/components/productCherry/ProductCherry";
 import ProductZero from "@/components/productZero/ProductZero";
-import { SponsortMusic } from "@/lib/data";
+
 
 export default function Home() {
   return (
