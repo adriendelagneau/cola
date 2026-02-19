@@ -1,6 +1,6 @@
 import Hero from "@/components/hero/Hero";
-import ImageMarqueeSponsors from "@/components/ImageMarquee";
 import Marquee from "@/components/Marquee";
+import Marquee2 from "@/components/Marquee2";
 import ProductCherry from "@/components/productCherry/ProductCherry";
 import ProductZero from "@/components/productZero/ProductZero";
 import { SponsortMusic } from "@/lib/data";
@@ -36,7 +36,7 @@ export default function Home() {
         speed={1.1}
         sentence="Breizh Cola Cherry revisite l’esprit breton avec une touche fruitée : des bulles de caractère, une cerise intense et une fraîcheur venue de l’Ouest."
       />
-      <ImageMarqueeSponsors sponsors={SponsortMusic} speed={1} />;
+
     </div>
   );
 }

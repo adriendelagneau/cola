@@ -452,7 +452,7 @@ export const SponsortMusic = [
     linkUrl: "https://aupontdurock.com",
   },
   {
-    src: "https://res.cloudinary.com/dos8mey8r/image/upload/v1729089912/breizhCola/sponsorts/download_2__150x150_kxyrwn.jpg",
+    src: "/GDVHLogos205X197-150x150.png",
     linkUrl: "https://belleileonair.com",
   },
   {

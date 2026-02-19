@@ -7,7 +7,8 @@ import { useRef } from "react";
 interface MarqueeProps {
   initialDirection?: number;
   speed?: number;
-  sentence: string;
+  sentence?: string;
+  data?: any;
   bgColor?: string;
 }
 
@@ -15,6 +16,7 @@ const Marquee = ({
   initialDirection = 1,
   speed = 1,
   sentence,
+  data,
   bgColor = "#591420",
 }: MarqueeProps) => {
   const firstText = useRef<HTMLParagraphElement>(null);

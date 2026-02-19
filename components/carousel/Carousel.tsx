@@ -78,7 +78,7 @@ const Carousel = () => {
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [angleOffset, isAnimating]);
 
-  // const activeIndex = ((currentIndex % total) + total) % total;
+
 
   return (
     <div
@@ -111,6 +111,9 @@ const Carousel = () => {
             const x = Math.sin(angle) * radiusX;
             const z = Math.cos(angle) * radiusZ;
 
+            const scale = gsap.utils.mapRange(-radiusZ, radiusZ, 0.6, 0.8, z);
+
+
             return (
               <Center key={`${flavor.flavor}-${index}`} position={[x, -0.1, z]}>
                 <Billboard lockX lockZ>
@@ -119,9 +122,9 @@ const Carousel = () => {
                       canRefs.current[index] = el;
                     }}
                     flavor={flavor.flavor}
-                    scale={0.8}
-                    floatIntensity={0.1}
-                    rotationIntensity={0}
+                    scale={scale}
+                    floatIntensity={0.7}
+                    rotationIntensity={0.8}
                   />
                 </Billboard>
               </Center>
