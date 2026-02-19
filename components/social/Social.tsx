@@ -54,7 +54,7 @@ const Social = () => {
   return (
     <div
       ref={containerRef}
-      className="relative flex h-[35vh] w-full items-center justify-center overflow-hidden lg:h-[50vh]"
+      className="relative z-50 flex h-[35vh] w-full items-center justify-center overflow-hidden lg:h-[50vh]"
     >
       <p className="font-poppins text-secondary mb-36 -skew-y-3 text-3xl uppercase sm:text-5xl lg:text-7xl">
         restez connectez

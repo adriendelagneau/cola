@@ -1,7 +1,9 @@
 import Hero from "@/components/hero/Hero";
+import ImageMarqueeSponsors from "@/components/ImageMarquee";
 import Marquee from "@/components/Marquee";
 import ProductCherry from "@/components/productCherry/ProductCherry";
 import ProductZero from "@/components/productZero/ProductZero";
+import { SponsortMusic } from "@/lib/data";
 
 export default function Home() {
   return (
@@ -12,13 +14,11 @@ export default function Home() {
         speed={1}
         sentence="Une brise iodée venue de l’océan traverse la Bretagne, apportant fraîcheur, caractère et authenticité."
       />
-
       <Marquee
         initialDirection={-1}
         speed={0.7}
         sentence="Breizh Cola incarne l’esprit breton : une terre de caractère, des saveurs authentiques et une fraîcheur qui se partage, face à l’océan et sous un ciel ouvert."
       />
-
       <Marquee
         initialDirection={1}
         speed={0.9}
@@ -36,6 +36,7 @@ export default function Home() {
         speed={1.1}
         sentence="Breizh Cola Cherry revisite l’esprit breton avec une touche fruitée : des bulles de caractère, une cerise intense et une fraîcheur venue de l’Ouest."
       />
+      <ImageMarqueeSponsors sponsors={SponsortMusic} speed={1} />;
     </div>
   );
 }

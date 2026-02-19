@@ -442,3 +442,57 @@ export const sections = [
 ];
 
 
+export const SponsortMusic = [
+  {
+    src: "https://res.cloudinary.com/dos8mey8r/image/upload/v1729089913/breizhCola/sponsorts/download_3__150x150_oyzedo.jpg",
+    linkUrl: "https://bobital.com",
+  },
+  {
+    src: "https://res.cloudinary.com/dos8mey8r/image/upload/v1729089911/breizhCola/sponsorts/download_1__150x150_ltnc6n.jpg",
+    linkUrl: "https://aupontdurock.com",
+  },
+  {
+    src: "https://res.cloudinary.com/dos8mey8r/image/upload/v1729089912/breizhCola/sponsorts/download_2__150x150_kxyrwn.jpg",
+    linkUrl: "https://belleileonair.com",
+  },
+  {
+    src: "https://res.cloudinary.com/dos8mey8r/image/upload/v1729089925/breizhCola/sponsorts/download_150x150_oou17c.jpg",
+    linkUrl: "https://aubdm.com",
+  },
+  {
+    src: "https://res.cloudinary.com/dos8mey8r/image/upload/v1729089914/breizhCola/sponsorts/download_4__150x150_fjgy0l.jpg",
+    linkUrl: "https://festivalchantmarin.com",
+  },
+  {
+    src: "https://res.cloudinary.com/dos8mey8r/image/upload/v1729089915/breizhCola/sponsorts/download_5__150x150_lbwbh5.jpg",
+    linkUrl: "https://festival-interceltique.bzh",
+  },
+  {
+    src: "https://res.cloudinary.com/dos8mey8r/image/upload/v1729089916/breizhCola/sponsorts/download_6__150x150_zds1us.jpg",
+    linkUrl: "https://jazzenville.com",
+  },
+  {
+    src: "https://res.cloudinary.com/dos8mey8r/image/upload/v1729089917/breizhCola/sponsorts/download_7__156x150_m0naer.jpg",
+    linkUrl: "https://mlogo.com",
+  },
+  {
+    src: "https://res.cloudinary.com/dos8mey8r/image/upload/v1729089918/breizhCola/sponsorts/download_8__150x150_dhnode.jpg",
+    linkUrl: "https://motszik.com",
+  },
+  {
+    src: "https://res.cloudinary.com/dos8mey8r/image/upload/v1729089920/breizhCola/sponsorts/download_9__150x150_lprow8.jpg",
+    linkUrl: "https://roiarthur.com",
+  },
+  {
+    src: "https://res.cloudinary.com/dos8mey8r/image/upload/v1729089921/breizhCola/sponsorts/download_10__150x150_ed5ven.jpg",
+    linkUrl: "https://roue-waroch.com",
+  },
+  {
+    src: "https://res.cloudinary.com/dos8mey8r/image/upload/v1729089922/breizhCola/sponsorts/download_11__150x150_qq8fks.jpg",
+    linkUrl: "https://tombeesdelanuit.com",
+  },
+  {
+    src: "https://res.cloudinary.com/dos8mey8r/image/upload/v1729089924/breizhCola/sponsorts/download_12__150x150_ydhtuc.jpg",
+    linkUrl: "https://vieillescharrues.com",
+  },
+];
