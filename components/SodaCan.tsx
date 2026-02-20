@@ -6,7 +6,7 @@ import * as THREE from "three";
 useGLTF.preload("/Soda-can.gltf");
 
 const flavorTextures = {
-  original: "/labels/bco.png",
+  original: "/labels/bz1origibal.png",
   cherry: "/labels/bccherry.png",
   zero: "/labels/bczero.png",
   lime: "/labels/bcgreen.png",
