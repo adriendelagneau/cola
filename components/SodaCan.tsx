@@ -7,10 +7,10 @@ useGLTF.preload("/Soda-can.gltf");
 
 const flavorTextures = {
   original: "/labels/bz1origibal.png",
-  cherry: "/labels/bccherry.png",
-  zero: "/labels/bczero.png",
-  lime: "/labels/bcgreen.png",
-  coffe: "/labels/bccherry.png",
+  cherry: "/labels/bz1cherry.png",
+  zero: "/labels/bz1zero.png",
+  lime: "/labels/bz1lime.png",
+  coffe: "/labels/bz1coffee.png",
 };
 
 const metalMaterial = new THREE.MeshStandardMaterial({
