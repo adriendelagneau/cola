@@ -76,80 +76,92 @@ const MatterMarquee: React.FC = () => {
   };
 
   useEffect(() => {
-    const scene = sceneRef.current;
-    const can = canRef.current;
+    const initMatter = () => {
+      const scene = sceneRef.current;
+      const can = canRef.current;
+      if (!scene || !can) return;
 
-    if (!scene || !can) return;
-
-    const width = scene.offsetWidth;
-    const height = scene.offsetHeight;
-
-    const engine = Matter.Engine.create();
-    engine.gravity.y = 1;
-    engineRef.current = engine;
-
-    const render = Matter.Render.create({
-      element: scene,
-      engine,
-      options: {
-        width,
-        height,
-        wireframes: false,
-        background: "transparent",
-      },
-    });
-    renderRef.current = render;
-    Matter.Render.run(render);
-
-    const runner = Matter.Runner.create();
-    runnerRef.current = runner;
-    Matter.Runner.run(runner, engine);
-
-    const walls = [
-      Matter.Bodies.rectangle(width / 2, height + 25, width, 50, {
-        isStatic: true,
-      }),
-      Matter.Bodies.rectangle(-25, height / 2, 50, height, { isStatic: true }),
-      Matter.Bodies.rectangle(width + 25, height / 2, 50, height, {
-        isStatic: true,
-      }),
-      Matter.Bodies.rectangle(width / 2, -25, width, 50, { isStatic: true }),
-    ];
-    Matter.World.add(engine.world, walls);
-
-    const rectCan = can.getBoundingClientRect();
-    const sceneRect = scene.getBoundingClientRect();
-
-    const canBody = Matter.Bodies.rectangle(
-      rectCan.left - sceneRect.left + rectCan.width / 2,
-      rectCan.top - sceneRect.top + rectCan.height / 2,
-      rectCan.width,
-      rectCan.height,
-      { isStatic: true, render: { visible: false } }
-    );
-    Matter.World.add(engine.world, canBody);
-
-    const resizeObserver = new ResizeObserver(() => {
       const width = scene.offsetWidth;
       const height = scene.offsetHeight;
 
-      if (renderRef.current) {
-        renderRef.current.options.width = width;
-        renderRef.current.options.height = height;
-        renderRef.current.canvas.width = width;
-        renderRef.current.canvas.height = height;
+      // CLEANUP old engine if exists
+      if (engineRef.current) {
+        Matter.Render.stop(renderRef.current!);
+        Matter.Runner.stop(runnerRef.current!);
+        Matter.World.clear(engineRef.current.world, false);
+        Matter.Engine.clear(engineRef.current);
+        renderRef.current?.canvas.remove();
       }
+
+      // ENGINE
+      const engine = Matter.Engine.create();
+      engine.gravity.y = 1;
+      engineRef.current = engine;
+
+      // RENDER
+      const render = Matter.Render.create({
+        element: scene,
+        engine,
+        options: {
+          width,
+          height,
+          wireframes: false,
+          background: "transparent",
+        },
+      });
+      renderRef.current = render;
+      Matter.Render.run(render);
+
+      // RUNNER
+      const runner = Matter.Runner.create();
+      runnerRef.current = runner;
+      Matter.Runner.run(runner, engine);
+
+      // WALLS
+      const walls = [
+        Matter.Bodies.rectangle(width / 2, height + 25, width, 50, {
+          isStatic: true,
+        }),
+        Matter.Bodies.rectangle(-25, height / 2, 50, height, {
+          isStatic: true,
+        }),
+        Matter.Bodies.rectangle(width + 25, height / 2, 50, height, {
+          isStatic: true,
+        }),
+        Matter.Bodies.rectangle(width / 2, -25, width, 50, { isStatic: true }),
+      ];
+      Matter.World.add(engine.world, walls);
+
+      // CAN COLLIDER
+      const rectCan = can.getBoundingClientRect();
+      const sceneRect = scene.getBoundingClientRect();
+      const canBody = Matter.Bodies.rectangle(
+        rectCan.left - sceneRect.left + rectCan.width / 2,
+        rectCan.top - sceneRect.top + rectCan.height / 2,
+        rectCan.width,
+        rectCan.height,
+        { isStatic: true, render: { visible: false } }
+      );
+      Matter.World.add(engine.world, canBody);
+    };
+
+    initMatter(); // initial load
+
+    const resizeObserver = new ResizeObserver(() => {
+      initMatter(); // re-init on resize
     });
-    resizeObserver.observe(scene);
+
+    if (sceneRef.current) resizeObserver.observe(sceneRef.current);
 
     return () => {
       resizeObserver.disconnect();
-      Matter.Render.stop(render);
-      Matter.Runner.stop(runner);
-      Matter.World.clear(engine.world, false);
-      Matter.Engine.clear(engine);
-      render.canvas.remove();
-      render.textures = {};
+      if (engineRef.current) {
+        Matter.Render.stop(renderRef.current!);
+        Matter.Runner.stop(runnerRef.current!);
+        Matter.World.clear(engineRef.current.world, false);
+        Matter.Engine.clear(engineRef.current);
+        renderRef.current?.canvas.remove();
+      }
     };
   }, []);
 
