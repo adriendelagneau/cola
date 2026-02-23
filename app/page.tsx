@@ -44,7 +44,7 @@ export default function Home() {
         speed={1.1}
         sentence="Breizh Cola Cherry revisite l’esprit breton avec une touche fruitée : des bulles de caractère, une cerise intense et une fraîcheur venue de l’Ouest."
       />
-      <div className="p-24 h-screen w-full">
+      <div className="px-24 h-screen w-full">
         <MatterMarquee />
       </div>
     </div>

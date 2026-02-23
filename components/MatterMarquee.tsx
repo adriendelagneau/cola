@@ -166,7 +166,7 @@ const MatterMarquee: React.FC = () => {
   }, []);
 
   return (
-    <div className="relative flex h-[80vh] w-full justify-center">
+    <div className="relative flex h-full w-full justify-center">
       {/* BUTTON */}
       <button
         className="absolute top-4 z-10 rounded-md bg-blue-500 px-4 py-2 text-white hover:bg-blue-600"
