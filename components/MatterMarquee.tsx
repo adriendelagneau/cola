@@ -11,69 +11,69 @@ const MatterMarquee: React.FC = () => {
   const runnerRef = useRef<Matter.Runner | null>(null);
   const renderRef = useRef<Matter.Render | null>(null);
 
-  // FIRE FUNCTION
- const fireCannon = () => {
-  const engine = engineRef.current;
-  const scene = sceneRef.current;
-  const can = canRef.current;
-
-  if (!engine || !scene || !can) return;
-
-  const rect = can.getBoundingClientRect();
-  const sceneRect = scene.getBoundingClientRect();
-
-  const baseX = rect.left - sceneRect.left + rect.width / 2;
-  const baseY = rect.top - sceneRect.top + 6;
-
-  const total = 16;
-  const spreadDeg = 12;
-  const baseAngleDeg = -90; // tir vertical
-  const speed = 14;
-
-  const radius = 24; // rayon physique
-  const originalImageSize = 200; // tes images sont 200x200
-
   const sponsorImages = [
     "/sponsorts/music/t1.png",
     "/sponsorts/music/t1.png",
     "/sponsorts/music/t1.png",
     "/sponsorts/music/t1.png",
   ];
+  const originalImageSize = 200;
 
-  for (let i = 0; i < total; i++) {
-    setTimeout(() => {
-      const angleDeg =
-        baseAngleDeg + (Math.random() * spreadDeg * 2 - spreadDeg);
-      const angleRad = (angleDeg * Math.PI) / 180;
+  const fireCannon = () => {
+    const engine = engineRef.current;
+    const scene = sceneRef.current;
+    const can = canRef.current;
 
-      const velocity = {
-        x: Math.cos(angleRad) * speed,
-        y: Math.sin(angleRad) * speed,
-      };
+    if (!engine || !scene || !can) return;
 
-      const image = sponsorImages[Math.floor(Math.random() * sponsorImages.length)];
+    const rect = can.getBoundingClientRect();
+    const sceneRect = scene.getBoundingClientRect();
 
-      const circle = Matter.Bodies.circle(baseX, baseY, radius, {
-        restitution: 0.7,
-        friction: 0.00005,
-        frictionAir: 0.01,
-        density: 0.01,
-        render: {
-          sprite: {
-            texture: image,
-            xScale: (radius * 2) / originalImageSize,
-            yScale: (radius * 2) / originalImageSize,
+    const baseX = rect.left - sceneRect.left + rect.width / 2;
+    const baseY = rect.top - sceneRect.top + 6;
+
+    const total = 16;
+    const spreadDeg = 12;
+    const baseAngleDeg = -90;
+    const speedFactor = Math.min(scene.offsetWidth, scene.offsetHeight) * 0.07;
+
+    const radius = Math.min(scene.offsetWidth, scene.offsetHeight) * 0.06;
+
+    for (let i = 0; i < total; i++) {
+      setTimeout(() => {
+        const angleDeg =
+          baseAngleDeg + (Math.random() * spreadDeg * 2 - spreadDeg);
+        const angleRad = (angleDeg * Math.PI) / 180;
+
+        const velocity = {
+          x: Math.cos(angleRad) * speedFactor,
+          y: Math.sin(angleRad) * speedFactor,
+        };
+
+        const image =
+          sponsorImages[Math.floor(Math.random() * sponsorImages.length)];
+
+        const circle = Matter.Bodies.circle(baseX, baseY, radius, {
+          restitution: 0.7,
+          friction: 0.00005,
+          frictionAir: 0.01,
+          density: 0.01,
+          render: {
+            sprite: {
+              texture: image,
+              xScale: (radius * 2) / originalImageSize,
+              yScale: (radius * 2) / originalImageSize,
+            },
           },
-        },
-      });
+        });
 
-      Matter.Body.setVelocity(circle, velocity);
-      Matter.Body.setAngularVelocity(circle, (Math.random() - 0.5) * 0.4);
+        Matter.Body.setVelocity(circle, velocity);
+        Matter.Body.setAngularVelocity(circle, (Math.random() - 0.5) * 0.4);
 
-      Matter.World.add(engine.world, circle);
-    }, i * 70);
-  }
-};
+        Matter.World.add(engine.world, circle);
+      }, i * 70);
+    }
+  };
 
   useEffect(() => {
     const scene = sceneRef.current;
@@ -84,12 +84,10 @@ const MatterMarquee: React.FC = () => {
     const width = scene.offsetWidth;
     const height = scene.offsetHeight;
 
-    // ENGINE
     const engine = Matter.Engine.create();
     engine.gravity.y = 1;
     engineRef.current = engine;
 
-    // RENDER
     const render = Matter.Render.create({
       element: scene,
       engine,
@@ -100,83 +98,79 @@ const MatterMarquee: React.FC = () => {
         background: "transparent",
       },
     });
-
     renderRef.current = render;
     Matter.Render.run(render);
 
-    // RUNNER
     const runner = Matter.Runner.create();
     runnerRef.current = runner;
     Matter.Runner.run(runner, engine);
 
-    // WALLS (container boundaries)
     const walls = [
-      // floor
       Matter.Bodies.rectangle(width / 2, height + 25, width, 50, {
         isStatic: true,
       }),
-
-      // left
-      Matter.Bodies.rectangle(-25, height / 2, 50, height, {
-        isStatic: true,
-      }),
-
-      // right
+      Matter.Bodies.rectangle(-25, height / 2, 50, height, { isStatic: true }),
       Matter.Bodies.rectangle(width + 25, height / 2, 50, height, {
         isStatic: true,
       }),
-
-      // ceiling
-      Matter.Bodies.rectangle(width / 2, -25, width, 50, {
-        isStatic: true,
-      }),
+      Matter.Bodies.rectangle(width / 2, -25, width, 50, { isStatic: true }),
     ];
-
     Matter.World.add(engine.world, walls);
 
-    // CAN COLLIDER
-    const rect = can.getBoundingClientRect();
+    const rectCan = can.getBoundingClientRect();
     const sceneRect = scene.getBoundingClientRect();
 
     const canBody = Matter.Bodies.rectangle(
-      rect.left - sceneRect.left + rect.width / 2,
-      rect.top - sceneRect.top + rect.height / 2,
-      rect.width,
-      rect.height,
-      {
-        isStatic: true,
-        render: {
-          visible: false,
-        },
-      },
+      rectCan.left - sceneRect.left + rectCan.width / 2,
+      rectCan.top - sceneRect.top + rectCan.height / 2,
+      rectCan.width,
+      rectCan.height,
+      { isStatic: true, render: { visible: false } }
     );
-
     Matter.World.add(engine.world, canBody);
 
-    // CLEANUP
+    const resizeObserver = new ResizeObserver(() => {
+      const width = scene.offsetWidth;
+      const height = scene.offsetHeight;
+
+      if (renderRef.current) {
+        renderRef.current.options.width = width;
+        renderRef.current.options.height = height;
+        renderRef.current.canvas.width = width;
+        renderRef.current.canvas.height = height;
+      }
+    });
+    resizeObserver.observe(scene);
+
     return () => {
+      resizeObserver.disconnect();
       Matter.Render.stop(render);
       Matter.Runner.stop(runner);
       Matter.World.clear(engine.world, false);
       Matter.Engine.clear(engine);
-
       render.canvas.remove();
       render.textures = {};
     };
   }, []);
 
   return (
-    <div className="matter-wrapper">
+    <div className=" w-full h-[80vh] relative flex justify-center ">
       {/* BUTTON */}
-      <button className="cannon-button" onClick={fireCannon}>
+      <button
+        className=" absolute top-4 z-10 px-4 py-2 bg-blue-500 text-white rounded-md hover:bg-blue-600"
+        onClick={fireCannon}
+      >
         Open can
       </button>
 
       {/* SCENE */}
-      <div ref={sceneRef} className="matter-scene">
+      <div ref={sceneRef} className=" w-full h-full relative overflow-hidden">
         {/* CAN */}
-        <div ref={canRef} className="can-container">
-          <img src="/can.png" className="can-image" />
+        <div
+          ref={canRef}
+          className=" absolute bottom-0 left-1/2 transform -translate-x-1/2 z-20 pointer-events-none"
+        >
+          <img src="/can.png" className="can-image w-30 block" />
         </div>
       </div>
     </div>

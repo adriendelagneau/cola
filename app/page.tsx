@@ -16,7 +16,7 @@ const sponsors = [
 export default function Home() {
   return (
     <div className="relative z-5 min-h-screen w-full">
-       <Hero />
+      <Hero />
       <Marquee
         initialDirection={1}
         speed={1}
@@ -43,10 +43,10 @@ export default function Home() {
         initialDirection={-1}
         speed={1.1}
         sentence="Breizh Cola Cherry revisite l’esprit breton avec une touche fruitée : des bulles de caractère, une cerise intense et une fraîcheur venue de l’Ouest."
-      /> 
-
-              <MatterMarquee />
-    
+      />
+      <div className="p-24 h-screen w-full">
+        <MatterMarquee />
+      </div>
     </div>
   );
 }
