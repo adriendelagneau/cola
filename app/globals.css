@@ -64,3 +64,42 @@
   --inner-stroke: #c49b3a;
   --text-color: #ffffff;
 }
+
+
+
+.matter-wrapper {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.matter-scene {
+  width: 800px;
+  height: 500px;
+  position: relative;
+  /* border: 2px solid #222; */
+  overflow: hidden;
+}
+
+/* Matter canvas */
+.matter-scene canvas {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 1;
+}
+
+/* Can container */
+.can-container {
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 2;
+  pointer-events: none;
+}
+
+.can-image {
+  width: 120px;
+  display: block;
+}

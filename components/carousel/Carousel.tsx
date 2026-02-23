@@ -22,7 +22,7 @@ const FLAVORS: {
   { flavor: "zero", color: "#000000", name: "Zero Sucres" },
   { flavor: "cherry", color: "#2e0823", name: "Cherry" },
   { flavor: "lime", color: "#00A300", name: "Lime Twist" },
-  { flavor: "coffe", color: "#3b0a45", name: "Coffe Blast" },
+  { flavor: "coffee", color: "#3b0a45", name: "Coffe Blast" },
 ];
 
 const Carousel = () => {

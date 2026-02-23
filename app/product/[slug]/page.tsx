@@ -12,7 +12,7 @@ const Page = async ({ params }: PageProps) => {
     | "cherry"
     | "zero"
     | "lime"
-    | "coffe";
+    | "coffee";
 
   return (
     <div className="relative z-5 pt-24">

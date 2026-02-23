@@ -43,7 +43,7 @@ export default function Sidebar() {
       color: "group-hover:text-lime-800",
     },
     {
-      href: "/product/coffe",
+      href: "/product/coffee",
       label: "café",
       color: "group-hover:text-yellow-900",
     },

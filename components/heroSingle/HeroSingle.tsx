@@ -12,7 +12,7 @@ import { getProductByVariant } from "@/lib/hepler";
 const HeroSingle = ({
   variant,
 }: {
-  variant: "original" | "cherry" | "zero" | "lime" | "coffe";
+  variant: "original" | "cherry" | "zero" | "lime" | "coffee";
 }) => {
   const product = getProductByVariant(variant);
 

@@ -39,7 +39,7 @@ export default function SidebarScene() {
         />
 
         <FloatingCan floatSpeed={4.5} scale={1.5} flavor="lime" position={[0, SPACING * 3, 0]} />
-        <FloatingCan floatSpeed={4.5} scale={1.5} flavor="coffe" position={[0, SPACING * 4, 0]} />
+        <FloatingCan floatSpeed={4.5} scale={1.5} flavor="coffee" position={[0, SPACING * 4, 0]} />
 
       </group>
 
