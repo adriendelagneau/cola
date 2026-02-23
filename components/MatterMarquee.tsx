@@ -13,9 +13,9 @@ const MatterMarquee: React.FC = () => {
 
   const sponsorImages = [
     "/sponsorts/music/t1.png",
-    "/sponsorts/music/t1.png",
-    "/sponsorts/music/t1.png",
-    "/sponsorts/music/t1.png",
+    "/sponsorts/music/t2.png",
+    "/sponsorts/music/t3.png",
+    "/sponsorts/music/t4.png",
   ];
   const originalImageSize = 200;
 
@@ -33,11 +33,11 @@ const MatterMarquee: React.FC = () => {
     const baseY = rect.top - sceneRect.top + 6;
 
     const total = 16;
-    const spreadDeg = 12;
+    const spreadDeg = 20;
     const baseAngleDeg = -90;
-    const speedFactor = Math.min(scene.offsetWidth, scene.offsetHeight) * 0.07;
+    const speedFactor = Math.min(scene.offsetWidth, scene.offsetHeight) * 0.008;
 
-    const radius = Math.min(scene.offsetWidth, scene.offsetHeight) * 0.06;
+    const radius = Math.min(scene.offsetWidth, scene.offsetHeight) * 0.055;
 
     for (let i = 0; i < total; i++) {
       setTimeout(() => {
@@ -107,6 +107,7 @@ const MatterMarquee: React.FC = () => {
           height,
           wireframes: false,
           background: "transparent",
+        
         },
       });
       renderRef.current = render;
