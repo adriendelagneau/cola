@@ -154,23 +154,23 @@ const MatterMarquee: React.FC = () => {
   }, []);
 
   return (
-    <div className=" w-full h-[80vh] relative flex justify-center ">
+    <div className="relative flex h-[80vh] w-full justify-center">
       {/* BUTTON */}
       <button
-        className=" absolute top-4 z-10 px-4 py-2 bg-blue-500 text-white rounded-md hover:bg-blue-600"
+        className="absolute top-4 z-10 rounded-md bg-blue-500 px-4 py-2 text-white hover:bg-blue-600"
         onClick={fireCannon}
       >
         Open can
       </button>
 
       {/* SCENE */}
-      <div ref={sceneRef} className=" w-full h-full relative overflow-hidden">
+      <div ref={sceneRef} className="relative h-full w-full overflow-hidden">
         {/* CAN */}
         <div
           ref={canRef}
-          className=" absolute bottom-0 left-1/2 transform -translate-x-1/2 z-20 pointer-events-none"
+          className="pointer-events-none absolute bottom-0 left-1/2 z-20 -translate-x-1/2 transform"
         >
-          <img src="/can.png" className="can-image w-30 block" />
+          <img src="/can.png" className="can-image block w-30 xl:w-60" />
         </div>
       </div>
     </div>
