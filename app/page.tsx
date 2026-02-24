@@ -1,3 +1,4 @@
+import Chronos from "@/components/chronos/Temps";
 import Hero from "@/components/hero/Hero";
 import Marquee from "@/components/Marquee";
 import MatterMarquee from "@/components/MatterMarquee";
@@ -44,9 +45,11 @@ export default function Home() {
         speed={1.1}
         sentence="Breizh Cola Cherry revisite l’esprit breton avec une touche fruitée : des bulles de caractère, une cerise intense et une fraîcheur venue de l’Ouest."
       />
-      <div className="px-24 h-[100vh] w-full">
+      <div className="px-24 w-full my-80">
+        <h2 className="text-6xl text-secondary font-poppins -skew-1 text-center  pb-3 mt-24">Breizh Cola soutiens la musique et le sport !</h2>
         <MatterMarquee />
       </div>
+      <Chronos />
     </div>
   );
 }
